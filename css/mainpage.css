@@ -1,15 +1,47 @@
 html {
-  background: black;
+  background: white;
 }
 
 body {
-  color: white;
-  opacity: .85;
+  color: black;
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-.header {
+.top-part {
   display: flex;
   justify-content: center;
-  flex-direction: column;
 
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 6vh;
+}
+
+.header-column {
+  text-align: left;
+  margin-right: 6vw ;
+}
+.image-container {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  
+}
+.pfp-img {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  transform: scale(1);
+  object-fit: cover;
+}
+
+.about-info {
+  padding: 0.5vh 0px;
+  margin: 0;
 }
