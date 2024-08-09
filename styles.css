@@ -1,7 +1,11 @@
+/* Media Queries for Mobile  */
+
+
+
 /* Main Styles */
 :root {
-  --background-color: white;
-  --text-color: black;
+  --background-color: rgb(255, 255, 255);
+  --text-color: rgb(0, 0, 0);
   --box-shadow-color: rgba(0, 0, 0, 0.5);
   --active-link-color: #5145c2;
 }
@@ -60,7 +64,7 @@ a {
 .header-column {
   text-align: left;
   margin-right: 3vw;
-  padding: 20px;
+  padding: 30px;
 }
 
 .image-container {
@@ -99,7 +103,7 @@ nav a.active {
 }
 
 .about-info {
-  padding: 0.5vh 0px;
+  padding: 2px;
   margin: 0;
 }
 

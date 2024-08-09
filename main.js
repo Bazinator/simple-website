@@ -9,23 +9,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Dark mode functionality
   const darkModeToggle = document.getElementById('darkModeToggle');
-  const body = document.body;
 
-  // Check for saved user preference
-  const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  const isDarkMode = localStorage.getItem('darkMode') == 'true';
 
-  // Set initial mode
-  if (isDarkMode) {
-    body.classList.add('dark-mode');
+  const applyDarkMode = () => {
+    document.documentElement.style.setProperty('--background-color', '#1a1a1a')
+    document.documentElement.style.setProperty('--text-color', '#f0f0f0')
+    document.documentElement.style.setProperty('--box-shadow-color', 'rgba(255, 255, 255, 0.1)')
+
+    }
+  const applyLightMode = () => {
+    document.documentElement.style.setProperty('--background-color', 'rgb(255, 255, 255)')
+    document.documentElement.style.setProperty('--text-color', 'rgb(0, 0, 0)')
+    document.documentElement.style.setProperty('--box-shadow-color', 'rgba(0, 0, 0, 0.5)')
+    
   }
-
-  // Toggle dark mode
+  if (isDarkMode) {
+    applyDarkMode();
+  } else {
+    applyLightMode();
+  }
   darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
-  });
+    if (document.documentElement.style.getPropertyValue('--background-color') === 'rgb(255, 255, 255)' ) {
+      applyDarkMode();
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      applyLightMode();
+      localStorage.setItem('darkMode', 'false')
+    }
+  })
 
   console.log('JS file loaded');
 });
