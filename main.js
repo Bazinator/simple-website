@@ -17,12 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
     document.documentElement.style.setProperty('--background-color', '#1a1a1a')
     document.documentElement.style.setProperty('--text-color', '#f0f0f0')
     document.documentElement.style.setProperty('--box-shadow-color', 'rgba(255, 255, 255, 0.1)')
+    document.getElementById("github-png").src='Assets/github-mark-white.png'
+    document.getElementById("insta-png").src='Assets/instapngwhite.png'
+    document.getElementById("linkedin-png").src='Assets/linkedinblack.png'
 
     }
   const applyLightMode = () => {
     document.documentElement.style.setProperty('--background-color', 'rgb(255, 255, 255)')
     document.documentElement.style.setProperty('--text-color', 'rgb(0, 0, 0)')
     document.documentElement.style.setProperty('--box-shadow-color', 'rgba(0, 0, 0, 0.5)')
+    document.getElementById("github-png").src='Assets/github-mark.png'
+    document.getElementById("insta-png").src='Assets/instapng.png'
+    document.getElementById("linkedin-png").src='Assets/linkedin.png'
     
   }
   if (isDarkMode) {

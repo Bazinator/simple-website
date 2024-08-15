@@ -1,8 +1,1 @@
-Add Media queries for smaller devices.
-  - All that needs to be done is the navbar needs to be a bit lower, and probably just remove the profile photo
-
-
-
-Publish the damn Website
-
-Change the links to svg's eventually or just png's I guess?
+Fix the Dark Mode Toggle on the other pages, place it somewhere on the page and done.
