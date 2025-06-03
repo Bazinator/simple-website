@@ -3,10 +3,10 @@
   --background-color: rgb(255, 255, 255);
   --text-color: rgb(0, 0, 0);
   --box-shadow-color: rgba(0, 0, 0, 0.5);
-  --active-link-color: #5145c2;
+  --active-link-color: #2e7d32;
 }
 
-body.dark-mode {
+html.dark-mode {
   --background-color: #1a1a1a;
   --text-color: #f0f0f0;
   --box-shadow-color: rgba(255, 255, 255, 0.1);
@@ -26,15 +26,13 @@ body {
   margin: 0;
   padding: 0;
   transition: background-color 0.3s, color 0.3s;
+  background-color: var(--background-color);
 }
 
 a {
   text-decoration: none;
   color: var(--text-color);
 }
-
-
-
 
 .box-shadow {
   box-shadow: 0px 0px 15px var(--box-shadow-color);
@@ -144,8 +142,6 @@ nav a.active {
   font-weight: bold;
 }
 
-
-
 /* Main Content Styles */
 main {
   max-width: 850px;
@@ -172,8 +168,109 @@ h2 {
 }
 
 /* Projects Styles */
-.project {
-  margin-bottom: 20px;
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border: 2px solid #2e7d32;
+}
+
+.project-card h3 {
+    margin: 0 0 1rem 0;
+    color: #2e7d32;
+}
+
+.project-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #000000;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    background-color: rgba(46, 125, 50, 0.1);
+    color: #292929;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    cursor:default;
+}
+
+.project-links {
+    margin-top: 1rem;
+}
+
+.project-link {
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: #505050;
+}
+
+/* Dark mode for project cards */
+html.dark-mode .project-card {
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.2) 0%, rgba(76, 175, 80, 0.3) 100%);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+html.dark-mode .project-card:hover {
+    border: 2px solid #57b654;
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.3) 0%, rgba(76, 175, 80, 0.4) 100%);
+}
+
+html.dark-mode .project-card h3 {
+    color: #a5d6a7;
+}
+
+html.dark-mode .project-description {
+    color: #e8f5e9;
+}
+
+html.dark-mode .tech-tag {
+    background-color: rgba(165, 214, 167, 0.2);
+    color: #a5d6a7;
+}
+
+html.dark-mode .project-link {
+    color: #a5d6a7;
+}
+
+html.dark-mode .project-link:hover {
+    color: #c9c9c9;
+}
+
+/* Responsive design for projects */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Footer Styles */
@@ -184,8 +281,6 @@ footer {
   color: var(--text-color);
   border-top: 1px solid var(--text-color);
 }
-
-
 
 /* Blog Styles */
 .blog-preview {
@@ -224,6 +319,7 @@ footer {
 }
 
 .back_arrow {
+  color: white;
   width: 20px;
   margin-top: 55px;
   margin-left: -40px;

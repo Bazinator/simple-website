@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michael Bazett - Projects</title>
+    <script>
+        (function() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="Assets/favicon2.png">
@@ -38,9 +46,31 @@
     <main role="main">
         <section class="section projects-section">
             <h2>Projects</h2>
-            <div class="project">
-                <h3>Personal Website</h3>
-                <p>My personal website you are viewing right now. I fight for simplicity and elegance.</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Personal Website</h3>
+                    <p class="project-description">My personal website you are viewing right now. I fight for simplicity and elegance.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Bazinator/simple-website" target="_blank" class="project-link">Github Source Code</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Project Name</h3>
+                    <p class="project-description">A brief description of your project and its key features.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Technology 1</span>
+                        <span class="tech-tag">Technology 2</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="project-link">View Project</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

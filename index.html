@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michael Bazett - Personal Website</title>
+    <script>
+        // Prevent flash of wrong theme
+        (function() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="Assets/icon.jpg">
@@ -51,8 +60,7 @@
                     </a>
                 </div>
                 <p>Hi, I'm Michael Bazett. I am a student at Simon Fraser University, currently studying Software Systems. I'm passionate about mathematics, computer science, and bringing change to what we see around us.</p>
-    
-                <p></p>
+                <p>Currently I work in the restuarant industry. I spend my nights cooking and making meals at two establishments, The Keg and Noble at the Hills. I take pride and joy in the food I serve and cook.</p>
             </div>
         </section>
     </main>
