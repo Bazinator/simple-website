@@ -1,12 +1,14 @@
 <!-- projects.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michael Bazett - Projects</title>
     <script>
-        (function() {
+        (function () {
+            document.documentElement.classList.add('theme-loading');
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
             if (isDarkMode) {
                 document.documentElement.classList.add('dark-mode');
@@ -17,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="Assets/favicon2.png">
 </head>
+
 <body>
     <header class="top-part">
         <nav class="nav-bar">
@@ -27,14 +30,17 @@
         </nav>
         <div class="header-row">
             <div class="header-column box-shadow rounded-edges">
+
                 <div class="header-button-row">
                     <h1 id="michael-bazett" class="about-info">Michael Bazett</h1>
                     <button id="darkModeToggle" class="toggle-button">
                         <span class="toggle-circle"></span>
                     </button>
                 </div>
-                <h3 id="math-and-computer-science-enthusiast-aspiring-hacker" class="about-info">Math and Computer Science Enthusiast, Aspiring Hacker</h3>
-                <p class="about-info">Surrey, BC, Canada</p>
+                <h3 id="math-and-computer-science-enthusiast-aspiring-hacker" class="about-info">Computer Science &
+                    Applied Math @ SFU</h3>
+                <p class="about-info">BC, Canada</p>
+
 
             </div>
             <div class="image-container">
@@ -49,71 +55,51 @@
             <div class="projects-grid" id="projectsGrid">
                 <div class="project-card" data-expanded="false">
                     <div class="collapsed-content">
-                        <h3>Personal Website</h3>
-                        <p class="project-description">My personal website you are viewing right now. I fight for simplicity and elegance.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <button class="view-more-btn">View More</button>
-                    </div>
-                    
-                    <div class="expanded-content">
-                        <button class="close-btn" aria-label="Close">&times;</button>
-                        <img src="Assets/pfp2.jpg" alt="Personal Website Screenshot" class="project-media">
-                        <h3>Personal Website</h3>
-                        <p class="project-detail-description">
-                            A minimalist personal portfolio website built with pure HTML, CSS, and JavaScript. 
-                            Features a clean, responsive design with dark/light mode toggle, smooth animations, 
-                            and a focus on typography and whitespace. The site showcases my projects, blog posts, 
-                            and personal information in an elegant, distraction-free interface. Built with 
-                            performance and accessibility in mind, using semantic HTML and modern CSS techniques 
-                            including CSS Grid, Flexbox, and CSS custom properties.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript ES6</span>
-                            <span class="tech-tag">Responsive Design</span>
-                            <span class="tech-tag">CSS Grid</span>
-                            <span class="tech-tag">CSS Variables</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Bazinator/simple-website" target="_blank" class="project-link">GitHub Source Code</a>
-                            <a href="index.html" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-expanded="false">
-                    <div class="collapsed-content">
-                        <h3>Data Analysis Dashboard</h3>
-                        <p class="project-description">Interactive dashboard for visualizing complex datasets with real-time updates.</p>
+                        <h3>Leftover Love</h3>
+                        <p class="project-description">A hackathon project to reduce restaurant food waste through
+                            community involvement.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">React</span>
-                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">MongoDB</span>
                         </div>
-                        <button class="view-more-btn">View More</button>
                     </div>
-                    
+
                     <div class="expanded-content">
                         <button class="close-btn" aria-label="Close">&times;</button>
-                        <img src="Assets/Course1.jpg" alt="Data Dashboard Screenshot" class="project-media">
-                        <h3>Data Analysis Dashboard</h3>
+                        <div class="carousel" aria-label="Project images">
+                            <div class="carousel-track" role="group" aria-roledescription="carousel">
+                                <div class="carousel-slide active">
+                                    <img src="Assets/Course1.jpg" alt="Leftover Love interface screenshot 1"
+                                        class="project-media">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Assets/Course2.jpg" alt="Leftover Love interface screenshot 2"
+                                        class="project-media">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Assets/Course3.jpg" alt="Leftover Love interface screenshot 3"
+                                        class="project-media">
+                                </div>
+                            </div>
+                            <div class="carousel-dots"></div>
+                        </div>
+                        <div class="expanded-header">
+                            <h3>Leftover Love</h3>
+                            <div class="carousel-nav">
+                                <button class="carousel-btn prev" type="button" aria-label="Previous image">&larr;</button>
+                                <button class="carousel-btn next" type="button" aria-label="Next image">&rarr;</button>
+                            </div>
+                        </div>
                         <p class="project-detail-description">
-                            A comprehensive data visualization dashboard that processes and displays large datasets 
-                            in real-time. Features interactive charts, filtering capabilities, and export functionality. 
-                            Built with Python for data processing and React for the frontend interface. The dashboard 
-                            includes multiple chart types, responsive design, and handles real-time data updates 
-                            efficiently. Perfect for business intelligence, research analysis, and monitoring systems.
+                            Leftover Love connects restaurants with local charities to reduce food waste by enabling
+                            real-time listings and pickups.
+                            Built during a hackathon using a Python backend and a React/Next.js frontend with MongoDB.
                         </p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pandas</span>
                             <span class="tech-tag">React</span>
-                            <span class="tech-tag">D3.js</span>
                             <span class="tech-tag">WebSocket</span>
                             <span class="tech-tag">REST API</span>
                         </div>
@@ -123,18 +109,99 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Auction Wizard card -->
+                <div class="project-card" data-expanded="false">
+                    <div class="collapsed-content">
+                        <h3>Auction Wizard</h3>
+                        <p class="project-description">An event-driven system that ingests live CS:GO marketplace data
+                            and turns it into actionable signals.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">next.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="expanded-content">
+                        <button class="close-btn" aria-label="Close">&times;</button>
+                        <div class="carousel" aria-label="Project images">
+                            <div class="carousel-track" role="group" aria-roledescription="carousel">
+                                <div class="carousel-slide active">
+                                    <img src="Assets/frontendsnipershowingmatch.png"
+                                        alt="Auction Wizard dashboard match result" class="project-media">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Assets/frontendhomepage.png" alt="Alternate UI shot of sniping interface"
+                                        class="project-media">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Assets/projectoverviewflow.png" alt="Placeholder visual for project imagery 2"
+                                        class="project-media">
+                                </div>
+                            </div>
+                            <div class="carousel-dots"></div>
+                        </div>
+                        <div class="expanded-header">
+                            <h3>Auction Wizard</h3>
+                            <div class="carousel-nav">
+                                <button class="carousel-btn prev" type="button" aria-label="Previous image">&larr;</button>
+                                <button class="carousel-btn next" type="button" aria-label="Next image">&rarr;</button>
+                            </div>
+                        </div>
+                        <p class="project-detail-description">
+                            Auction Wizard is a real-time CS:GO skin sniping prototype that consumes live WebSocket
+                            listings
+                            from CS:GO Empire and matches them against user-defined filters (price, float, item name).
+                            Built with a React/Node.js stack, it demonstrates real-time data processing, filtering
+                            pipelines, and full-stack system design.
+                            Project currently archived while focusing on smaller builds.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Bazinator/auction-wizard" target="_blank"
+                                class="project-link">GitHub Repository</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Website Card -->
+                <div class="project-card" data-expanded="false">
+                    <div class="collapsed-content">
+                        <h3>Personal Website</h3>
+                        <p class="project-description">My personal website. A simple and elegant design, which allows me
+                            to showcase my work. No fluff, fast and responsive.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
             </div>
         </section>
-        
+
         <!-- Backdrop overlay for expanded cards -->
         <div class="project-backdrop" id="projectBackdrop"></div>
     </main>
 
     <footer>
-        <p>&copy; 2024 Michael Bazett. All rights reserved.</p>
+        <p>&copy; 2026 Michael Bazett. All rights reserved.</p>
     </footer>
 
 
     <script src="main.js"></script>
 </body>
+
 </html>

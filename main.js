@@ -1,4 +1,6 @@
 console.log("JS loaded")
+
+
 document.addEventListener('DOMContentLoaded', function() {
   // Active page highlighting
   const currentLocation = location.href;
@@ -9,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+
+  // Remove theme-loading once 'DomContentLoaded'
+  requestAnimationFrame(() => {
+    document.documentElement.classList.remove('theme-loading');
+  })
   const darkModeToggle = document.getElementById('darkModeToggle');
   const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
@@ -69,18 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
     card.classList.add('expanded');
     currentlyExpanded = card;
 
-    // Show backdrop and dim other cards
-    backdrop.classList.add('active');
-    //projectsGrid.classList.add('dimmed');
-
-    // Disable body scroll
+    // Show backdrop and initialize carousel
+    if (backdrop) backdrop.classList.add('active');
     document.body.style.overflow = 'hidden';
-
-    // Focus the close button for accessibility
-    const closeBtn = card.querySelector('.close-btn');
-    if (closeBtn) {
-      setTimeout(() => closeBtn.focus(), 100);
-    }
+    setupCarousel(card);
   }
 
   // Function to collapse a project card
@@ -89,34 +88,28 @@ document.addEventListener('DOMContentLoaded', function() {
     card.classList.remove('expanded');
     currentlyExpanded = null;
 
-    // Hide backdrop and restore other cards
-    backdrop.classList.remove('active');
+    // Hide backdrop and restore scroll
+    if (backdrop) backdrop.classList.remove('active');
     projectsGrid.classList.remove('dimmed');
-
-    // Re-enable body scroll
     document.body.style.overflow = '';
 
-    // Focus back to the view more button
-    const viewMoreBtn = card.querySelector('.view-more-btn');
-    if (viewMoreBtn) {
-      viewMoreBtn.focus();
-    }
+    // Focus back to the card
+    card.focus();
   }
 
   // Add event listeners to project cards
   projectCards.forEach(card => {
-    const viewMoreBtn = card.querySelector('.view-more-btn');
-    const closeBtn = card.querySelector('.close-btn');
-
-    // View More button click
-    if (viewMoreBtn) {
-      viewMoreBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        expandCard(card);
-      });
-    }
+    // Card click to expand
+    card.addEventListener('click', (e) => {
+      // Don't expand if clicking close button or if already expanded
+      if (e.target.closest('.close-btn') || card.classList.contains('expanded')) {
+        return;
+      }
+      expandCard(card);
+    });
 
     // Close button click
+    const closeBtn = card.querySelector('.close-btn');
     if (closeBtn) {
       closeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -126,16 +119,104 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Backdrop click to close expanded card
-  backdrop.addEventListener('click', () => {
-    if (currentlyExpanded) {
-      collapseCard(currentlyExpanded);
+  if (backdrop) {
+    backdrop.addEventListener('click', () => {
+      if (currentlyExpanded) {
+        collapseCard(currentlyExpanded);
+      }
+    });
+  }
+
+  // Minimal carousel setup
+  const initializedCarousels = new WeakSet();
+
+  function setupCarousel(card) {
+    const carousel = card.querySelector('.carousel');
+    if (!carousel || initializedCarousels.has(carousel)) return;
+
+    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+    if (slides.length === 0) return;
+
+    let index = 0;
+
+    // Create dot indicators
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          index = i;
+          update();
+        });
+        dotsContainer.appendChild(dot);
+      });
     }
-  });
+
+    function update() {
+      slides.forEach((s, i) => {
+        const active = i === index;
+        s.classList.toggle('active', active);
+        s.setAttribute('aria-hidden', String(!active));
+        const img = s.querySelector('img');
+        if (img) img.setAttribute('tabindex', active ? '0' : '-1');
+      });
+
+      // Update dots
+      if (dotsContainer) {
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+    }
+    update();
+
+    const prevBtn = carousel.parentElement.querySelector('.carousel-btn.prev');
+    const nextBtn = carousel.parentElement.querySelector('.carousel-btn.next');
+
+    function move(delta) {
+      index = (index + delta + slides.length) % slides.length;
+      update();
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        move(-1);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        move(1);
+      });
+    }
+
+    initializedCarousels.add(carousel);
+  }
 
   // Escape key to close expanded card
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && currentlyExpanded) {
       collapseCard(currentlyExpanded);
+    }
+    // Arrow keys to navigate carousel when expanded
+    if (currentlyExpanded) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const prevBtn = currentlyExpanded.querySelector('.carousel-btn.prev');
+        if (prevBtn) prevBtn.click();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const nextBtn = currentlyExpanded.querySelector('.carousel-btn.next');
+        if (nextBtn) nextBtn.click();
+      }
     }
   });
 
