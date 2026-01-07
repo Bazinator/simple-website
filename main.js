@@ -2,6 +2,7 @@ console.log("JS loaded")
 
 
 document.addEventListener('DOMContentLoaded', function() {
+  
   // Active page highlighting
   const currentLocation = location.href;
   const navLinks = document.querySelectorAll('nav a');
