@@ -8,6 +8,7 @@
         // Prevent flash of wrong theme
         (function() {
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            document.documentElement.classList.add('theme-loading');
             if (isDarkMode) {
                 document.documentElement.classList.add('dark-mode');
             }
@@ -34,8 +35,8 @@
                         <span class="toggle-circle"></span>
                     </button>
                 </div>
-                <h3 id="math-and-computer-science-enthusiast-aspiring-hacker" class="about-info">Math and Computer Science Enthusiast, Aspiring Hacker</h3>
-                <p class="about-info">Surrey, BC, Canada</p>
+                <h3 id="math-and-computer-science-enthusiast-aspiring-hacker" class="about-info">Computer Science & Applied Math @ SFU</h3>
+                <p class="about-info">BC, Canada</p>
 
             </div>
             <div class="image-container">
@@ -66,7 +67,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Michael Bazett. All rights reserved.</p>
+        <p>&copy; 2026 Michael Bazett. All rights reserved.</p>
     </footer>
 
 
