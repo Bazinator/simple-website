@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="../main.js"></script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Title</title>
+      <script>
+        // preset the dark-mode so no FOUC
+        (function() {
+            document.documentElement.classList.add('theme-loading');
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
   <link rel="stylesheet" href="../styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -30,8 +41,7 @@
   </main>
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 Michael Bazett. All rights reserved.</p>
-  </footer>
-  <script src="../main.js"></script>
+    <p>&copy; 2026 Michael Bazett. All rights reserved.</p>
+    </footer>
 </body>
 </html>
